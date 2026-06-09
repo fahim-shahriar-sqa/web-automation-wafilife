@@ -125,29 +125,35 @@ public class BasePage extends DriverSetup {
         DriverSetup.getDriver().switchTo().parentFrame();
     }
 
-    Actions actions = new Actions(getDriver());
+
 
     public void scrollAmount(int x, int y){
+        Actions actions = new Actions(getDriver());
         actions.scrollByAmount(x,y).build().perform();
     }
 
     public void scrollElement(By locator){
+        Actions actions = new Actions(getDriver());
         actions.scrollToElement(getElement(locator)).build().perform();
     }
 
     public void movetoElement(By locator){
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(getElement(locator)).build().perform();
     }
 
     public void click(By locator){
+        Actions actions = new Actions(getDriver());
         actions.click(getElement(locator)).build().perform();
     }
 
     public void doubleClick(By locator){
+        Actions actions = new Actions(getDriver());
         actions.doubleClick(getElement(locator)).build().perform();
     }
 
     public void dragAndDrop(By locator1, By locator2){
+        Actions actions = new Actions(getDriver());
         actions.dragAndDrop(getElement(locator1),getElement(locator2)).build().perform();
     }
 }

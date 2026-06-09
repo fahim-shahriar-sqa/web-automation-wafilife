@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.time.Duration;
@@ -27,11 +29,16 @@ public class DriverSetup {
         return DRIVER_THREAD_LOCAL.get();
     }
 
-    @BeforeSuite
-    public void startBrowser() {
+    @BeforeMethod
+    public void startBrowser(){
         WebDriver driver = getBrowser(browser_name);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         setDriver(driver);
+    }
+
+    @AfterMethod
+    public void closeBrowser(){
+        getDriver().quit();
     }
 
     // Creates and returns the browser instance based on the provided name.
