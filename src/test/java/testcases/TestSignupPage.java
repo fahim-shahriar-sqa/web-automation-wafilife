@@ -25,7 +25,6 @@ public class TestSignupPage extends DriverSetup {
         signinPage.writeOnElement(signinPage.password_input, signinPage.password);
         signinPage.click(signinPage.login_btn);
         Assert.assertEquals(profilePage.getElementText(profilePage.logout_btn), profilePage.logout_btn_txt);
-
     }
 
     @Test

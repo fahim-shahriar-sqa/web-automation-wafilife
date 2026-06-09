@@ -168,4 +168,5 @@ public class BasePage extends DriverSetup {
                 ExpectedConditions.visibilityOfElementLocated(locator)
         );
     }
+
 }
