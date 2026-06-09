@@ -5,7 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverSetup;
+
+import java.time.Duration;
 
 public class BasePage extends DriverSetup {
 
@@ -65,8 +69,8 @@ public class BasePage extends DriverSetup {
         return getDriver().getWindowHandles().toString();
     }
 
-    public String getElementText(By locator){
-        return getElement(locator).getText();
+    public String getElementText(By locator) {
+        return waitForVisible(locator).getText().trim();
     }
 
     public void clickOnElement(By locator){
@@ -155,5 +159,13 @@ public class BasePage extends DriverSetup {
     public void dragAndDrop(By locator1, By locator2){
         Actions actions = new Actions(getDriver());
         actions.dragAndDrop(getElement(locator1),getElement(locator2)).build().perform();
+    }
+
+    public WebElement waitForVisible(By locator) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+
+        return wait.until(
+                ExpectedConditions.visibilityOfElementLocated(locator)
+        );
     }
 }
