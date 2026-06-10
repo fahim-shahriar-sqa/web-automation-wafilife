@@ -64,11 +64,13 @@ public class TestCheckoutPage extends DriverSetup {
     }
 
     @Test(priority = 4)
-    public void logout() throws InterruptedException{
+    public void logout(){
         homePage.loadAPage(homePage.url);
         homePage.clickOnElement(homePage.signin_btn);
         profilePage.clickOnElement(profilePage.logout_btn);
-        Assert.assertEquals(profilePage.getElementText(profilePage.logout_btn), profilePage.logout_btn_txt);
+        homePage.refresh();
+        Assert.assertEquals(homePage.getElementText(homePage.signin_btn), "Sign In");
         System.out.println("Logged out Successfully");
+//        System.out.println(homePage.getElementText(homePage.signin_btn));
     }
 }

@@ -1,6 +1,7 @@
 package testcases;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.HomePage;
@@ -25,6 +26,9 @@ public class TestSignupPage extends DriverSetup {
         signinPage.writeOnElement(signinPage.password_input, signinPage.password);
         signinPage.click(signinPage.login_btn);
         Assert.assertEquals(profilePage.getElementText(profilePage.logout_btn), profilePage.logout_btn_txt);
+        homePage.loadAPage(homePage.url);
+        homePage.clickOnElement(homePage.signin_btn);
+        profilePage.clickOnElement(profilePage.logout_btn);
     }
 
     @Test

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="D:/04_Learning/Projects/web-automation-wafilife/src/test/java/testcases">
+        <classes>
+            <class name="testcases.TestCheckoutPage">
+                <methods>
+                    <exclude name="login"/>
+                    <exclude name="addToCart"/>
+                    <exclude name="checkout"/>
+                    <exclude name="logout"/>
+                </methods>
+            </class>
+            <class name="testcases.TestFullProcessFlow">
+                <methods>
+                    <include name="fullTest"/>
+                </methods>
+            </class>
+            <class name="testcases.TestSignupPage">
+                <methods>
+                    <include name="loginWithValidCredentials"/>
+                    <include name="loginWithInvalidEmail"/>
+                    <include name="loginWithInvalidPassword"/>
+                    <include name="loginWithEmptyCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -169,4 +169,12 @@ public class BasePage extends DriverSetup {
         );
     }
 
+    public void customWait(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Wait interrupted", e);
+        }
+    }
 }
