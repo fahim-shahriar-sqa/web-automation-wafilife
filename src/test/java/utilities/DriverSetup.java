@@ -27,14 +27,14 @@ public class DriverSetup {
         return DRIVER_THREAD_LOCAL.get();
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void startBrowser(){
         WebDriver driver = getBrowser(browser_name);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         setDriver(driver);
     }
 
-    @AfterMethod
+    @AfterClass
     public void closeBrowser(){
         getDriver().quit();
     }

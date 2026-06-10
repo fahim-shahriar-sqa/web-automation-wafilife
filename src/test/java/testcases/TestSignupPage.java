@@ -64,21 +64,11 @@ public class TestSignupPage extends DriverSetup {
         homePage.click(homePage.popup_close);
         homePage.click(homePage.signin_btn);
         signinPage.click(signinPage.login_with_email);
-        signinPage.writeOnElement(signinPage.email_input, signinPage.email);
-        signinPage.writeOnElement(signinPage.password_input, signinPage.password);
+        signinPage.writeOnElement(signinPage.email_input, " ");
+        signinPage.writeOnElement(signinPage.password_input, " ");
+        signinPage.click(signinPage.login_btn);
+
+        Assert.assertEquals(signinPage.getElementText(signinPage.empty_email_error), signinPage.empty_email_error_txt);
+        Assert.assertEquals(signinPage.getElementText(signinPage.empty_password_error), signinPage.empty_password_error_txt);
     }
-
-
-//    @Test(dataProvider = "invalidUserCredentials", dataProviderClass = DataSet.class)
-//    public void loginWithInvalidCredentials(String email, String password, String error_message){
-//        homePage.loadAPage(homePage.url);
-//        homePage.window_maximize();
-//        homePage.click(homePage.popup_close);
-//        homePage.click(homePage.signin_btn);
-//        signinPage.click(signinPage.login_with_email);
-//        signinPage.writeOnElement(signinPage.email_input, email);
-//        signinPage.writeOnElement(signinPage.password_input, password);
-//        signinPage.click(signinPage.login_btn);
-//        Assert.assertEquals(signinPage.getElementText(signinPage.error_massage), error_message);
-//    }
 }

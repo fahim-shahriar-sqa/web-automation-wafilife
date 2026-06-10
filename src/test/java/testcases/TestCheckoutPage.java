@@ -15,7 +15,7 @@ public class TestCheckoutPage extends DriverSetup {
     CheckoutPage checkoutPage = new CheckoutPage();
 
     @Test(priority = 1)
-    public void login() throws InterruptedException {
+    public void login(){
         homePage.loadAPage(homePage.url);
         homePage.window_maximize();
         homePage.click(homePage.popup_close);
@@ -30,7 +30,7 @@ public class TestCheckoutPage extends DriverSetup {
     }
 
     @Test(priority = 2)
-    public void addToCart() throws InterruptedException{
+    public void addToCart(){
         getDriver().navigate().to(homePage.url);
         homePage.clickOnElement(homePage.author);
         homePage.scrollElement(homePage.play_store);
@@ -41,7 +41,7 @@ public class TestCheckoutPage extends DriverSetup {
     }
 
     @Test(priority = 3)
-    public void checkout() throws InterruptedException {
+    public void checkout(){
         getDriver().navigate().to(homePage.url);
         homePage.click(homePage.cart_btn);
         cartPage.click(cartPage.order_now);
@@ -68,6 +68,7 @@ public class TestCheckoutPage extends DriverSetup {
         homePage.loadAPage(homePage.url);
         homePage.clickOnElement(homePage.signin_btn);
         profilePage.clickOnElement(profilePage.logout_btn);
+        homePage.customWait(5);
         homePage.refresh();
         Assert.assertEquals(homePage.getElementText(homePage.signin_btn), "Sign In");
         System.out.println("Logged out Successfully");

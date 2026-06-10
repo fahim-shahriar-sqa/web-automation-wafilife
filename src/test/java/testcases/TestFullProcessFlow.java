@@ -55,8 +55,8 @@ public class TestFullProcessFlow extends DriverSetup {
         homePage.loadAPage(homePage.url);
         homePage.clickOnElement(homePage.signin_btn);
         profilePage.clickOnElement(profilePage.logout_btn);
+        homePage.customWait(5);
         homePage.refresh();
-        homePage.customWait(3);
         Assert.assertEquals(homePage.getElementText(homePage.signin_btn), "Sign In");
         System.out.println("Logged out Successfully");
 //        System.out.println(homePage.getElementText(homePage.signin_btn));
